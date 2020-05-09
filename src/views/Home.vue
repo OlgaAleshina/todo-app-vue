@@ -1,50 +1,23 @@
 <template>
   <div id="app">
-    <AddTodo v-on:add-todo="addTodo" />
-    <Todos v-bind:todos="todos" v-on:delete-todo="deleteTodo" />
+    <div class="note">
+      <Cards />
+
+      <div class="button-row">
+        <button class="button">Edit</button>
+        <button class="button">Delete</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Todos from "../components/Todos";
-
-import AddTodo from "../components/AddTodo";
-import axios from "axios";
+import Cards from "../components/Cards";
 
 export default {
   name: "home",
   components: {
-    Todos,
-    AddTodo
-  },
-  data() {
-    return {
-      todos: []
-    };
-  },
-  methods: {
-    deleteTodo(id) {
-      axios
-        .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
-        .then(() => (this.todos = this.todos.filter(todo => todo.id !== id)))
-        .catch(error => console.log(error));
-    },
-    addTodo(newTodo) {
-      const { title, completed } = newTodo;
-      axios
-        .post("https://jsonplaceholder.typicode.com/todos", {
-          title,
-          completed
-        })
-        .then(response => (this.todos = [...this.todos, response.data]))
-        .catch(error => console.log(error));
-    }
-  },
-  created() {
-    axios
-      .get("https://jsonplaceholder.typicode.com/todos?_limit=5")
-      .then(response => (this.todos = response.data))
-      .catch(error => console.log(error));
+    Cards
   }
 };
 </script>
@@ -56,9 +29,24 @@ export default {
   padding: 0;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.4;
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+.note {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fcf4a3;
+  width: 50%;
+  height: 50%;
+  box-shadow: 0 0 20px 3px;
 }
 
 .btn {

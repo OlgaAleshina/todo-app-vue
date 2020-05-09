@@ -1,8 +1,12 @@
 <template>
   <div>
-    <div class="todo-note">
+    <div class="card">
       <div v-bind:key="todo.id" v-for="todo in todos">
         <TodoItem v-bind:todo="todo" v-on:delete-todo="$emit('delete-todo', todo.id)" />
+        <div class="button-row">
+          <button class="button">Edit</button>
+          <button class="button">Delete</button>
+        </div>
       </div>
     </div>
   </div>

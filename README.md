@@ -47,5 +47,7 @@ yarn serve
 - [vue-router](https://router.vuejs.org/) - Official router for Vue.js.
 - [axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
 - [JSONPlaceholder](https://jsonplaceholder.typicode.com/) - Fake Online REST API for Testing and Prototyping.
+- [fontawesome](https://github.com/FortAwesome/vue-fontawesome) - icons
+
 
 

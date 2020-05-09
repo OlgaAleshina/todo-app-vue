@@ -1,8 +1,13 @@
 <template>
   <div>
+    <input type="text" name="todo" placeholder="Title" />
     <form @submit.prevent="addTodo">
-      <input type="text" v-model="title" name="title" placeholder="add" />
-      <input type="submit" value="Submit" class="btn" />
+      <div></div>
+      <br />
+      <div>
+        <input type="text" v-model="title" name="title" placeholder="Add Todo" />
+        <input type="submit" value="+" class="button" />
+      </div>
     </form>
   </div>
 </template>
@@ -36,8 +41,9 @@ form {
 input[type="text"] {
   flex: 10;
   padding: 5px;
-}
-input[type="submit"] {
-  flex: 2;
+  border: none;
+  border-bottom: 2px solid;
+  background-color: transparent;
+  padding: 10px;
 }
 </style>

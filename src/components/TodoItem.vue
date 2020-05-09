@@ -1,9 +1,14 @@
 <template>
   <div class="todo-item" v-bind:class="{'is-complete':todo.completed}">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css" />
     <ul>
       <input type="checkbox" v-on:change="markComplete" />
       {{todo.title}}
       <button @click="$emit('delete-todo', todo.id)" class="delete">x</button>
+      <button @click="$emit('edit-todo', todo.id)" class="delete">
+        edit
+        <i class="fas fa-pen"></i>
+      </button>
     </ul>
   </div>
 </template>
