@@ -1,13 +1,12 @@
 <template>
-  <div id="app">
-    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css" />
+  <div>
     <Header />
     <router-view />
   </div>
 </template>
 
 <script>
-import Header from "./views/Header";
+import Header from "./views/HeaderView";
 
 export default {
   name: "app",
@@ -28,18 +27,28 @@ export default {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
 }
-.btn {
-  display: inline-block;
-  border: none;
-  background: #555;
-  color: #fff;
-  padding: 7px 20px;
-  cursor: pointer;
-}
-.btn:hover {
-  background: #666;
-}
 
+.app {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+.note {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fcf4a3;
+  width: 30%;
+  height: 30%;
+  box-shadow: 0 0 20px 3px;
+}
 .button {
   background-color: #4caf50;
   border: none;
@@ -52,5 +61,14 @@ export default {
   margin: 4px;
   cursor: pointer;
   border-radius: 1rem;
+}
+
+.button:hover {
+  background: #666;
+}
+.button-row {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
 }
 </style>
