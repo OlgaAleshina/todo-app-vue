@@ -8,15 +8,15 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            component: () => import(/* webpackChunkName: "about" */ './views/HomeView.vue')
+            component: () => import(/* webpackChunkName: "about" */ './views/CardView.vue')
         },
         {
-            path: '/card',
-            name: 'card',
+            path: '/todo-card',
+            name: 'todo-card',
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () => import(/* webpackChunkName: "about" */ './views/CardView.vue')
+            component: () => import(/* webpackChunkName: "about" */ './views/TodoView.vue')
         }
     ]
 })

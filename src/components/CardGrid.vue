@@ -4,7 +4,9 @@
       <CardItem v-bind:todo="todo" />
     </div>
     <div class="note">
-      <button class="button">+</button>
+      <router-link to="/todo-card">
+        <button class="button">+</button>
+      </router-link>
     </div>
   </div>
 </template>

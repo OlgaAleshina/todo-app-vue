@@ -12,7 +12,8 @@ export default {
   name: "app",
   components: {
     Header
-  }
+  },
+  data() {}
 };
 </script>
 
@@ -46,11 +47,11 @@ export default {
   flex-direction: column;
   background-color: #fcf4a3;
   width: 30%;
-  height: 30%;
+
   box-shadow: 0 0 20px 3px;
 }
 .button {
-  background-color: #4caf50;
+  background-color: #a9a9a9;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -63,6 +64,12 @@ export default {
   border-radius: 1rem;
 }
 
+.button[type="danger"] {
+  background-color: red;
+}
+.button[type="success"] {
+  background-color: #4caf50;
+}
 .button:hover {
   background: #666;
 }
@@ -72,3 +79,48 @@ export default {
   padding: 20px;
 }
 </style>
+
+/* cards: [
+      {
+        id: 1,
+        title: "First Card",
+        todos: [
+          { id: 1, text: "delectus aut autem", completed: false },
+          { id: 2, text: "fugiat veniam minus", completed: false },
+          {
+            id: 3,
+            text:
+              "laboriosam mollitia et enim quasi adipisci quia provident illum",
+            completed: false
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: "First Card",
+        todos: [
+          { id: 1, text: "delectus aut autem", completed: false },
+          { id: 2, text: "fugiat veniam minus", completed: false },
+          {
+            id: 3,
+            text:
+              "laboriosam mollitia et enim quasi adipisci quia provident illum",
+            completed: false
+          }
+        ]
+      },
+      {
+        id: 3,
+        title: "First Card",
+        todos: [
+          { id: 1, text: "delectus aut autem", completed: false },
+          { id: 2, text: "fugiat veniam minus", completed: false },
+          {
+            id: 3,
+            text:
+              "laboriosam mollitia et enim quasi adipisci quia provident illum",
+            completed: false
+          }
+        ]
+      }
+    ];
