@@ -1,11 +1,12 @@
 <template>
   <div>
-    <h2>{{todo.userId}}</h2>
-    <li>{{todo.title}}</li>
-
+    <h2>{{card.title}}</h2>
+    <div v-bind:key="card.id" v-for="card in card.todos">
+      <li>{{card.text}}</li>
+    </div>
     <div class="button-row">
       <button class="button">Edit</button>
-      <button class="button">Delete</button>
+      <button @click="$emit('delete-card',card.id)" class="button" type="danger">Delete</button>
     </div>
   </div>
 </template>
@@ -13,6 +14,6 @@
 <script>
 export default {
   name: "CardItem",
-  props: ["todo"]
+  props: ["card"]
 };
 </script>

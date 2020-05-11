@@ -1,7 +1,7 @@
 <template>
   <div class="app">
-    <div class="note" v-bind:key="todo.id" v-for="todo in todos">
-      <CardItem v-bind:todo="todo" />
+    <div class="note" v-bind:key="card.id" v-for="card in cards">
+      <CardItem v-bind:card="card" v-on:delete-card="$emit('delete-card', card.id)" />
     </div>
     <div class="note">
       <router-link to="/todo-card">
@@ -16,7 +16,7 @@ import CardItem from "./CardItem";
 export default {
   name: "CardGrid",
   components: { CardItem },
-  props: ["todos"]
+  props: ["cards"]
 };
 </script>
 

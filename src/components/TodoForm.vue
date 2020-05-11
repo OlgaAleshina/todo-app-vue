@@ -1,11 +1,12 @@
 <template>
-  <form @submit.prevent="addTodo">
-    <input type="text" v-model="title" name="title" placeholder="Title" />
-    <br />
-    <input type="text" v-model="text" name="text" placeholder="Add Todo" />
-    <br />
-    <input type="submit" value="+" />
-  </form>
+  <div>
+    <input type="text" v-model="title" id="title" name="title" placeholder="Title" />
+
+    <form @submit.prevent="addTodo">
+      <input type="text" v-model="text" name="text" placeholder="Add Todo" />
+      <input type="submit" value="+" class="button" />
+    </form>
+  </div>
 </template>
 
 <script>
@@ -22,7 +23,6 @@ export default {
   methods: {
     addTodo() {
       const newTodo = {
-        title: this.title,
         text: this.text,
         completed: false,
         id: uuidv4()
@@ -30,6 +30,11 @@ export default {
       //send up to parent
       this.$emit("add-todo", newTodo);
       this.text = "";
+    }
+  },
+  watch: {
+    title: function() {
+      this.$emit("card-title", this.title);
     }
   }
 };
@@ -45,6 +50,8 @@ input[type="text"] {
   padding: 10px;
 }
 input[type="submit"] {
-  color: red;
+  color: black;
+  background-color: transparent;
+  padding: 0%;
 }
 </style>

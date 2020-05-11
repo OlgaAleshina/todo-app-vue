@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <router-view />
+    <router-view v-bind:cards="cards" v-on:delete-card="deleteCard" v-on:add-card="addCard" />
   </div>
 </template>
 
@@ -13,7 +13,48 @@ export default {
   components: {
     Header
   },
-  data() {}
+  data() {
+    return {
+      cards: [
+        {
+          id: 1,
+          title: "First Card",
+          todos: [
+            { id: 1, text: "delectus aut autem", completed: false },
+            { id: 2, text: "fugiat veniam minus", completed: false },
+            {
+              id: 3,
+              text:
+                "laboriosam mollitia et enim quasi adipisci quia provident illum",
+              completed: false
+            }
+          ]
+        }
+      ]
+    };
+  },
+  methods: {
+    deleteCard(id) {
+      this.cards = this.cards.filter(card => card.id !== id);
+    },
+    addCard(newCard) {
+      this.cards = [...this.cards, newCard];
+    }
+  },
+  watch: {
+    cards: {
+      handler() {
+        console.log("smth changed");
+        localStorage.setItem("cards", JSON.stringify(this.cards));
+      },
+      deep: true
+    }
+  },
+  mounted() {
+    console.log("App mounted");
+    if (localStorage.getItem("cards"))
+      this.cards = JSON.parse(localStorage.getItem("cards"));
+  }
 };
 </script>
 
@@ -80,47 +121,3 @@ export default {
 }
 </style>
 
-/* cards: [
-      {
-        id: 1,
-        title: "First Card",
-        todos: [
-          { id: 1, text: "delectus aut autem", completed: false },
-          { id: 2, text: "fugiat veniam minus", completed: false },
-          {
-            id: 3,
-            text:
-              "laboriosam mollitia et enim quasi adipisci quia provident illum",
-            completed: false
-          }
-        ]
-      },
-      {
-        id: 2,
-        title: "First Card",
-        todos: [
-          { id: 1, text: "delectus aut autem", completed: false },
-          { id: 2, text: "fugiat veniam minus", completed: false },
-          {
-            id: 3,
-            text:
-              "laboriosam mollitia et enim quasi adipisci quia provident illum",
-            completed: false
-          }
-        ]
-      },
-      {
-        id: 3,
-        title: "First Card",
-        todos: [
-          { id: 1, text: "delectus aut autem", completed: false },
-          { id: 2, text: "fugiat veniam minus", completed: false },
-          {
-            id: 3,
-            text:
-              "laboriosam mollitia et enim quasi adipisci quia provident illum",
-            completed: false
-          }
-        ]
-      }
-    ];
