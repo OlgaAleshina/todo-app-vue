@@ -16,4 +16,7 @@ export default {
 </script>
 
 <style scoped>
+.todo {
+  padding: 0;
+}
 </style>

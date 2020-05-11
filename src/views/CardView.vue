@@ -1,6 +1,10 @@
 <template>
   <div>
-    <Cards v-bind:cards="cards" />
+    <Cards
+      v-bind:cards="cards"
+      v-on:delete-card="$emit('delete-card', card.id)"
+      v-on:edit-card="$emit('edit-card')"
+    />
   </div>
 </template>
 

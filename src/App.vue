@@ -1,7 +1,12 @@
 <template>
   <div>
     <Header />
-    <router-view v-bind:cards="cards" v-on:delete-card="deleteCard" v-on:add-card="addCard" />
+    <router-view
+      v-bind:cards="cards"
+      v-on:delete-card="deleteCard"
+      v-on:add-card="addCard"
+      v-on:edit-card="editCard"
+    />
   </div>
 </template>
 
@@ -36,11 +41,17 @@ export default {
   methods: {
     deleteCard(id) {
       this.cards = this.cards.filter(card => card.id !== id);
+      console.log("delete card is emited");
+      localStorage.setItem("cards", JSON.stringify(this.cards));
     },
     addCard(newCard) {
       this.cards = [...this.cards, newCard];
+    },
+    editCard() {
+      console.log("I edited smth");
     }
   },
+  //try delete item localstorage methods (tania)
   watch: {
     cards: {
       handler() {
@@ -110,6 +121,12 @@ export default {
 }
 .button[type="success"] {
   background-color: #4caf50;
+}
+
+.button[type="transparent"] {
+  background-color: transparent;
+  color: black;
+  padding: 0px;
 }
 .button:hover {
   background: #666;

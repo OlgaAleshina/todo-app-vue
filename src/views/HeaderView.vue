@@ -2,7 +2,7 @@
   <header class="header">
     <h1>Todo Cards</h1>
     <div id="nav">
-      <router-link to="/">Home</router-link>
+      <router-link to="/">All cards</router-link>
     </div>
   </header>
 </template>

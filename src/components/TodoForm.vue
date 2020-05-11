@@ -3,8 +3,8 @@
     <input type="text" v-model="title" id="title" name="title" placeholder="Title" />
 
     <form @submit.prevent="addTodo">
-      <input type="text" v-model="text" name="text" placeholder="Add Todo" />
-      <input type="submit" value="+" class="button" />
+      <input v-model="text" name="text" placeholder="Add Todo" />
+      <button type="transparent" class="button">+</button>
     </form>
   </div>
 </template>
@@ -41,17 +41,18 @@ export default {
 </script>
 
 <style scoped>
-input[type="text"] {
+input {
   flex: 10;
   padding: 5px;
   border: none;
-  border-bottom: 2px solid;
+
   background-color: transparent;
   padding: 10px;
 }
-input[type="submit"] {
-  color: black;
-  background-color: transparent;
-  padding: 0%;
+input[type="text"] {
+  border-bottom: 2px solid;
+}
+form {
+  border-bottom: 2px solid;
 }
 </style>

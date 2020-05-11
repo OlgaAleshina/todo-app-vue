@@ -8,7 +8,7 @@
       <div class="button-row">
         <button class="button" type="success" v-on:click="addCard">save</button>
         <button class="button">cancel</button>
-        <button class="button" v-on:click="repeatTodo">repeat</button>
+        <button class="button">repeat</button>
         <button class="button" type="danger" v-on:click="clearCard">delete</button>
       </div>
     </div>
@@ -30,7 +30,8 @@ export default {
     return {
       id: "",
       title: "",
-      todos: []
+      todos: [],
+      showModal: false
     };
   },
 
@@ -51,10 +52,10 @@ export default {
                     }
                 }
                 return item
-    },
+    },*/
     getTitle(params) {
       this.title = params;
-    },*/
+    },
     clearCard() {
       this.id = "";
       this.title = "";

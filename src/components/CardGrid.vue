@@ -1,11 +1,15 @@
 <template>
   <div class="app">
     <div class="note" v-bind:key="card.id" v-for="card in cards">
-      <CardItem v-bind:card="card" v-on:delete-card="$emit('delete-card', card.id)" />
+      <CardItem
+        v-bind:card="card"
+        v-on:delete-card="$emit('delete-card', card.id)"
+        v-on:edit-card="$emit('edit-card')"
+      />
     </div>
     <div class="note">
       <router-link to="/todo-card">
-        <button class="button">+</button>
+        <button class="button" type="transparent">+</button>
       </router-link>
     </div>
   </div>
@@ -21,4 +25,10 @@ export default {
 </script>
 
 <style scoped>
+.note {
+  height: 30%;
+}
+.button {
+  font-size: 5rem;
+}
 </style>

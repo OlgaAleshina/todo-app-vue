@@ -1,12 +1,13 @@
 <template>
   <div>
     <h2>{{card.title}}</h2>
-    <div v-bind:key="card.id" v-for="card in card.todos">
-      <li>{{card.text}}</li>
+    <div v-bind:key="card.id" class="todo-list">
+      <li>{{card.todos[0].text}}</li>
+      <li>{{card.todos[1].text}}</li>
     </div>
     <div class="button-row">
-      <button class="button">Edit</button>
-      <button @click="$emit('delete-card',card.id)" class="button" type="danger">Delete</button>
+      <button @click="$emit('edit-card', card.id)" class="button">Edit</button>
+      <button @click="$emit('delete-card', card.id)" class="button" type="danger">Delete</button>
     </div>
   </div>
 </template>
@@ -17,3 +18,10 @@ export default {
   props: ["card"]
 };
 </script>
+
+<style scoped>
+.todo-list {
+  padding: 10px;
+  text-align: left;
+}
+</style>
