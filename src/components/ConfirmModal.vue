@@ -3,8 +3,8 @@
   <div class="modal">
     <div class="container">
       <p>Are you sure?</p>
-      <button class="button" v-on:close="$emit('close')">No</button>
-      <button class="button" v-on:confirm="$emit('confirm')">Yes</button>
+      <button class="button" v-on:click="$emit('close')">No</button>
+      <button class="button" v-on:click="$emit('confirm')">Yes</button>
     </div>
   </div>
 </template>

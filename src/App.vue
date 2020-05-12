@@ -39,14 +39,15 @@ export default {
     };
   },
   methods: {
-    deleteCard(id) {
-      this.cards = this.cards.filter(card => card.id !== id);
-      console.log("delete card is emited");
-      localStorage.setItem("cards", JSON.stringify(this.cards));
-    },
     addCard(newCard) {
       this.cards = [...this.cards, newCard];
     },
+    deleteCard(id) {
+      this.cards = this.cards.filter(card => card.id !== id);
+      console.log("delete card is emited");
+      console.log(id);
+    },
+
     editCard() {
       console.log("I edited smth");
     }
@@ -99,7 +100,6 @@ export default {
   flex-direction: column;
   background-color: #fcf4a3;
   width: 30%;
-
   box-shadow: 0 0 20px 3px;
 }
 .button {

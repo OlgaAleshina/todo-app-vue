@@ -9,7 +9,17 @@
         <button class="button" type="success" v-on:click="addCard">save</button>
         <button class="button">cancel</button>
         <button class="button">repeat</button>
-        <button class="button" type="danger" v-on:click="clearCard">delete</button>
+        <button
+          class="button"
+          type="danger"
+          v-if="!showClearModal"
+          v-on:click="showClearModal=true"
+        >clear</button>
+        <ConfirmModal
+          v-show="showClearModal"
+          v-on:close="showClearModal=false"
+          v-on:confirm="clearCard"
+        />
       </div>
     </div>
   </div>
@@ -18,20 +28,22 @@
 <script>
 import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
+import ConfirmModal from "../components/ConfirmModal";
 import { v4 as uuidv4 } from "uuid";
 
 export default {
   name: "card",
   components: {
     TodoForm,
-    TodoList
+    TodoList,
+    ConfirmModal
   },
   data() {
     return {
       id: "",
       title: "",
       todos: [],
-      showModal: false
+      showClearModal: false
     };
   },
 
@@ -60,6 +72,7 @@ export default {
       this.id = "";
       this.title = "";
       this.todos = [];
+      this.showClearModal = false;
     },
     addCard() {
       let newCard = {
@@ -68,7 +81,7 @@ export default {
         todos: this.todos
       };
       this.$emit("add-card", newCard);
-      this.tilte = "";
+      this.title = "";
       this.todos = [];
     }
   }

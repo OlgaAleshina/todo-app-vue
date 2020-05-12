@@ -1,13 +1,16 @@
 <template>
   <div v-bind:class="{'is-complete':todo.completed}">
     <ul class="todo-item">
+      <!--checkbox, adds line-through property to text when checked-->
       <input type="checkbox" v-on:change="markComplete" />
       <span v-show="!showEditTodo">{{todo.text}}</span>
+      <!--shows input when edit button is clicked-->
       <input type="text" v-model="todo.text" v-if="showEditTodo" name="title" />
       <button v-on:click="showEditTodo=true" class="button">
         edit
         <i class="fas fa-pencil-alt"></i>
       </button>
+      <!--shows confirmation modal when delete clicked -->
       <button
         v-if="!showDeleteModal"
         v-on:click="showDeleteModal=true"
@@ -16,7 +19,7 @@
       >x</button>
     </ul>
     <ConfirmModal
-      v-if="showDeleteModal"
+      v-show="showDeleteModal"
       v-on:close="showDeleteModal=false"
       v-on:confirm="$emit('delete-todo', todo.id)"
     />
