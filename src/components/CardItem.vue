@@ -7,7 +7,7 @@
       <li>{{card.todos[1].text}}</li>
     </div>
     <div class="button-row">
-      <!-- route to edit card selected-->
+      <!-- route to editCardView-->
       <router-link to="/edit-card">
         <button v-on:click="$emit('edit-card', card.id)" class="button">Edit</button>
       </router-link>

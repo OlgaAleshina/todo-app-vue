@@ -1,11 +1,11 @@
 <template>
   <div>
     <!--problem with passing params here. cards.id return undefined-->
-
-    <div v-bind:key="card.id" v-for="card in cards">
+    {{cards}}
+    <div>
       <Cards
         v-bind:cards="cards"
-        v-on:delete-card="$emit('delete-card', card.id)"
+        v-on:delete-card="$emit('delete-card',cards.id)"
         v-on:edit-card="$emit('edit-card')"
       />
     </div>

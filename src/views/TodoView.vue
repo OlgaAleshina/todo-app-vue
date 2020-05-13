@@ -7,14 +7,19 @@
       </div>
       <div class="button-row">
         <button class="button" type="success" v-on:click="addCard">save</button>
-        <button class="button">cancel</button>
-        <button class="button">repeat</button>
+        <button class="button" v-if="!showCancelModal" v-on:click="showCancelModal=true">cancel</button>
+        <button class="button" v-on:click="repeatChange">repeat</button>
         <button
           class="button"
           type="danger"
           v-if="!showClearModal"
           v-on:click="showClearModal=true"
         >clear</button>
+        <ConfirmModal
+          v-show="showCancelModal"
+          v-on:close="showCancelModal=false"
+          v-on:confirm="cancelChange"
+        />
         <ConfirmModal
           v-show="showClearModal"
           v-on:close="showClearModal=false"
@@ -43,7 +48,8 @@ export default {
       id: "",
       title: "",
       todos: [],
-      showClearModal: false
+      showClearModal: false,
+      showCancelModal: false
     };
   },
 
@@ -54,17 +60,23 @@ export default {
     deleteTodo(id) {
       this.todos = this.todos.filter(todo => todo.id !== id);
     },
-    /*repeatTodo() {
-      this.todos.map((item) => {
-                if (item.id === action.id) {
-                    return {
-                        ...item,
-                        quantity: products[action.id - 1].quantity - 1,
-                        inStock: products[action.id - 1].inStock + 1
-                    }
-                }
-                return item
-    },*/
+
+    repeatChange() {
+      //assign to other object to avoid mutation of this.todos. this variant is shorter than map method
+      const lastTodo = {
+        text: this.todos[this.todos.length - 1].text,
+        id: uuidv4(),
+        completed: false
+      };
+      this.todos = [...this.todos, lastTodo];
+    },
+
+    cancelChange() {
+      const lastId = this.todos[this.todos.length - 1].id;
+      this.todos = this.todos.filter(todo => todo.id !== lastId);
+      this.showCancelModal = false;
+    },
+
     getTitle(params) {
       this.title = params;
     },

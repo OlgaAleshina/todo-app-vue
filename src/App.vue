@@ -52,7 +52,7 @@ export default {
       console.log("I edited smth");
     }
   },
-  //try delete item localstorage methods (tania)
+
   watch: {
     cards: {
       handler() {

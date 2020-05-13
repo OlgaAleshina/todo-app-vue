@@ -7,7 +7,6 @@
       <!--shows input when edit button is clicked-->
       <input type="text" v-model="todo.text" v-if="showEditTodo" name="title" />
       <button v-on:click="showEditTodo=true" class="button">
-        edit
         <i class="fas fa-pencil-alt"></i>
       </button>
       <!--shows confirmation modal when delete clicked -->
@@ -28,7 +27,6 @@
 
 <script>
 import ConfirmModal from "./ConfirmModal";
-//import { faPencil } from "@fortawesome/fontawesome-free";
 
 export default {
   name: "TodoItem",
