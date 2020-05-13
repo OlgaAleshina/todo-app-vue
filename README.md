@@ -1,30 +1,36 @@
-# todo-vue
+# Todo-vue
 
 ## Project Decription
-
+SPA notes application build on Vue.Js framework.
 
 **Project Requirements**
 
+Application has two views: Home and Edit.
+
+"Home" page shows list of all notes with first two todos without ability to mark.
+
+ Functionality:
+<ul>
+ <li> card: add, edit, delete.</li>
+</ul>
+
+"Edit" page shows a single note.
+
+Functionality:
+<ul>
+  <li> todo: add, mark, edit, delete. </li>
+   <li> note: add, edit, cancel last action, repeat last action, save.</li>
+ 
+No UI libraies are allowed
 
 ## Features
 
 The project includes
-- [x] 
-- [x] 
-- [x] 
-- [x] 
-- [x] 
-- [ ] 
-- [ ] 
+- [x] modal to confirm delete operations
+- [x] storing data at browser LocalStorage
+- [ ] responsive design
 
 ## Project setup
-
-- **Clone** Repository.
-- Open project directory
-
-``` bash
-cd 
-```
 
 - Install dependencies
 ``` bash
