@@ -3,7 +3,7 @@
     <ul class="todo-item">
       <!--checkbox, adds line-through property to text when checked-->
       <input type="checkbox" v-on:change="markComplete" />
-      <span v-show="!showEditTodo">{{todo.text}}</span>
+      <span class="span" v-show="!showEditTodo">{{todo.text}}</span>
       <!--shows input when edit button is clicked-->
       <input type="text" v-model="todo.text" v-if="showEditTodo" name="title" />
       <button v-on:click="showEditTodo=true" class="button">
@@ -57,6 +57,7 @@ input[type="text"] {
   border: none;
   background-color: transparent;
 }
+
 .is-complete {
   text-decoration: line-through;
 }
@@ -64,5 +65,8 @@ input[type="text"] {
   background-color: transparent;
   color: red;
   padding: 1rem;
+}
+.span {
+  margin: 10px;
 }
 </style>

@@ -8,7 +8,7 @@
     </div>
     <div class="button-row">
       <!-- route to editCardView-->
-      <router-link to="/edit-card">
+      <router-link to="/todo-card">
         <button v-on:click="$emit('edit-card', card.id)" class="button">Edit</button>
       </router-link>
       <button v-on:click="$emit('delete-card', card.id)" class="button" type="danger">Delete</button>
