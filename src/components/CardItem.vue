@@ -7,19 +7,36 @@
       <li>{{card.todos[1].text}}</li>
     </div>
     <div class="button-row">
-      <!-- route to editCardView-->
-      <router-link to="/todo-card">
-        <button v-on:click="$emit('edit-card', card.id)" class="button">Edit</button>
+      <!-- route to TodoView passing card.id as a parameter-->
+      <router-link :to="{name:'todo-card', params: {id: card.id }}">
+        <button class="button">Edit</button>
       </router-link>
-      <button v-on:click="$emit('delete-card', card.id)" class="button" type="danger">Delete</button>
+      <button
+        v-if="!showDeleteCardModal"
+        v-on:click="showDeleteCardModal=true"
+        class="button"
+        type="danger"
+      >Delete</button>
+      <ConfirmModal
+        v-show="showDeleteCardModal"
+        v-on:close="showDeleteCardModal=false"
+        v-on:confirm="$emit('delete-card', card.id)"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import ConfirmModal from "./ConfirmModal";
 export default {
   name: "CardItem",
-  props: ["card"]
+  components: { ConfirmModal },
+  props: ["card"],
+  data() {
+    return {
+      showDeleteCardModal: false
+    };
+  }
 };
 </script>
 

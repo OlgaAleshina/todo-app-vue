@@ -11,7 +11,7 @@ export default new Router({
             component: () => import(/* webpackChunkName: "about" */ './views/CardView.vue')
         },
         {
-            path: '/todo-card',
+            path: '/todo-card/:id',
             name: 'todo-card',
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route

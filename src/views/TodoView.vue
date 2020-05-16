@@ -31,6 +31,7 @@
 </template>
 
 <script>
+//try mounted to get data from Local Storage
 import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
 import ConfirmModal from "../components/ConfirmModal";
@@ -96,6 +97,14 @@ export default {
       this.title = "";
       this.todos = [];
     }
+  },
+
+  mounted(props) {
+    const cards = JSON.parse(localStorage.getItem("cards"));
+    console.log(cards);
+    console.log(props);
+    //this.todos = card[1].todos;
+    //this.title = card[1].title;
   }
 };
 </script>

@@ -1,28 +1,31 @@
 <template>
-  <!--problem with passing params here. cards.id return undefined-->
-
-  <div>
-    {{cards[0].id}}
-    <Cards
-      v-bind:cards="cards"
-      v-on:delete-card="$emit('delete-card',card.id)"
-      v-on:edit-card="$emit('edit-card')"
-    />
+  <div class="app">
+    <div class="note" v-bind:key="card.id" v-for="card in cards">
+      <CardItem v-bind:card="card" v-on:delete-card="$emit('delete-card', card.id)" />
+    </div>
+    <div class="note">
+      <router-link :to="{name:'todo-card', params: {id: 0 }}">
+        <button class="button" type="transparent">+</button>
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
-import Cards from "../components/CardGrid";
-
+import CardItem from "../components/CardItem";
 export default {
   name: "home",
-  components: {
-    Cards
-  },
+  components: { CardItem },
   props: ["cards"]
 };
 </script>
 
 <style scoped>
-</style>
+.button {
+  font-size: 5rem;
+}
 
+.note {
+  height: 30%;
+}
+</style>
