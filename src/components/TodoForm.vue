@@ -32,6 +32,7 @@ export default {
       this.text = "";
     }
   },
+  //watch changes in input and pass to parent
   watch: {
     title: function() {
       this.$emit("card-title", this.title);

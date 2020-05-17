@@ -2,7 +2,7 @@
   <div class="app">
     <div class="note">
       <div class="todos">
-        <TodoForm v-on:add-todo="addTodo" @card-title="getTitle" />
+        <TodoForm v-on:add-todo="addTodo" v-model="title" />
         <TodoList v-bind:todo="todos" v-on:delete-todo="deleteTodo" />
       </div>
       <div class="button-row">
@@ -31,7 +31,6 @@
 </template>
 
 <script>
-//try mounted to get data from Local Storage
 import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
 import ConfirmModal from "../components/ConfirmModal";
@@ -50,7 +49,9 @@ export default {
       title: "",
       todos: [],
       showClearModal: false,
-      showCancelModal: false
+      showCancelModal: false,
+      //id passed with router when pressed edit card
+      routeId: this.$route.params.id
     };
   },
 
@@ -99,12 +100,15 @@ export default {
     }
   },
 
-  mounted(props) {
-    const cards = JSON.parse(localStorage.getItem("cards"));
-    console.log(cards);
-    console.log(props);
-    //this.todos = card[1].todos;
-    //this.title = card[1].title;
+  mounted() {
+    if (this.routeId !== 0) {
+      //get all cards from local storage
+      const cards = JSON.parse(localStorage.getItem("cards"));
+      //get card to edit by id taken from router parameters
+      const cardToEdit = cards.filter(card => card.id === this.routeId);
+      this.todos = cardToEdit[0].todos;
+      this.title = cardToEdit[0].title;
+    }
   }
 };
 </script>

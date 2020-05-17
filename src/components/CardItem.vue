@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>{{card.title}}</h2>
-    <!-- shows only two items of card.todos array-->
+    <!-- shows only first two items of card.todos array-->
     <div v-bind:key="card.id" class="todo-list">
       <li>{{card.todos[0].text}}</li>
       <li>{{card.todos[1].text}}</li>
