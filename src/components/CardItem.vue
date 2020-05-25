@@ -7,7 +7,7 @@
       <li>{{card.todos[1].text}}</li>
     </div>
     <div class="button-row">
-      <!-- route to TodoView passing card.id as a parameter-->
+      <!-- route to TodoView passing card.id as a parameter to be edited in TodoView-->
       <router-link :to="{name:'todo-card', params: {id: card.id }}">
         <button class="button">Edit</button>
       </router-link>
@@ -25,6 +25,7 @@
     </div>
   </div>
 </template>
+
 
 <script>
 import ConfirmModal from "./ConfirmModal";

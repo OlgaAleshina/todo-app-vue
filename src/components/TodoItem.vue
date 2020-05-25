@@ -4,7 +4,7 @@
       <!--checkbox, adds line-through property to text when checked-->
       <input type="checkbox" v-on:change="markComplete" />
       <span class="span" v-show="!showEditTodo">{{todo.text}}</span>
-      <!--shows input when edit button is clicked-->
+      <!--shows input form when edit button is clicked and hides span with todo text-->
       <input type="text" v-model="todo.text" v-if="showEditTodo" name="title" />
       <button v-on:click="showEditTodo=true" class="button">
         <i class="fas fa-pencil-alt"></i>

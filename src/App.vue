@@ -1,14 +1,10 @@
 <template>
   <div>
     <Header />
-    <router-view
-      v-bind:cards="cards"
-      v-on:delete-card="deleteCard"
-      v-on:add-card="addCard"
-      v-on:edit-card="editCard"
-    />
+    <router-view v-bind:cards="cards" v-on:delete-card="deleteCard" v-on:add-card="addCard" />
   </div>
 </template>
+
 
 <script>
 import Header from "./views/HeaderView";
@@ -39,17 +35,14 @@ export default {
     };
   },
   methods: {
-    addCard(newCard) {
+    addCard(newCard, editedCardId) {
+      //add new card
       this.cards = [...this.cards, newCard];
+      //delete cart that was edited, if it was edited, not to have duplicated cards
+      this.cards = this.cards.filter(card => card.id !== editedCardId);
     },
     deleteCard(id) {
       this.cards = this.cards.filter(card => card.id !== id);
-      console.log("delete card is emited");
-      console.log(id);
-    },
-
-    editCard() {
-      console.log("I edited smth");
     }
   },
 

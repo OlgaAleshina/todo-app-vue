@@ -2,7 +2,8 @@
   <div class="app">
     <div class="note">
       <div class="todos">
-        <TodoForm v-on:add-todo="addTodo" v-model="title" />
+        <TodoForm v-on:add-todo="addTodo" v-model="title" v-on:card-title="getTitle" />
+        <div>{{title}}</div>
         <TodoList v-bind:todo="todos" v-on:delete-todo="deleteTodo" />
       </div>
       <div class="button-row">
@@ -50,8 +51,8 @@ export default {
       todos: [],
       showClearModal: false,
       showCancelModal: false,
-      //id passed with router when pressed edit card
-      routeId: this.$route.params.id
+      //id passed with router when pressed edit card button
+      cardToEditId: this.$route.params.id
     };
   },
 
@@ -94,18 +95,21 @@ export default {
         title: this.title,
         todos: this.todos
       };
-      this.$emit("add-card", newCard);
+      //pass id of card that was edited to app component
+      const editedCardId = this.cardToEditId;
+      this.$emit("add-card", newCard, editedCardId);
       this.title = "";
       this.todos = [];
     }
   },
 
   mounted() {
-    if (this.routeId !== 0) {
+    //check if addNewCard or editCard is clicked. Add new card passes params: {id:0}
+    if (this.cardToEditId !== 0) {
       //get all cards from local storage
       const cards = JSON.parse(localStorage.getItem("cards"));
       //get card to edit by id taken from router parameters
-      const cardToEdit = cards.filter(card => card.id === this.routeId);
+      const cardToEdit = cards.filter(card => card.id === this.cardToEditId);
       this.todos = cardToEdit[0].todos;
       this.title = cardToEdit[0].title;
     }
