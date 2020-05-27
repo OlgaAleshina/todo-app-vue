@@ -2,8 +2,16 @@
   <div class="app">
     <div class="note">
       <div class="todos">
-        <TodoForm v-on:add-todo="addTodo" v-model="title" v-on:card-title="getTitle" />
-        <div>{{title}}</div>
+        <!-- 
+        v-on:card-title takes input value from TodoForm  
+        v-bind:titleProp pass this.title value to TodoForm-->
+        <TodoForm
+          v-on:add-todo="addTodo"
+          v-model="title"
+          v-on:card-title="getTitle"
+          v-bind:titleProp="title"
+        />
+
         <TodoList v-bind:todo="todos" v-on:delete-todo="deleteTodo" />
       </div>
       <div class="button-row">
@@ -47,7 +55,7 @@ export default {
   data() {
     return {
       id: "",
-      title: "",
+      title: "vv",
       todos: [],
       showClearModal: false,
       showCancelModal: false,

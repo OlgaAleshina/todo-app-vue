@@ -1,6 +1,13 @@
 <template>
   <div>
-    <input type="text" v-model="title" id="title" name="title" placeholder="Title" />
+    <input
+      type="text"
+      v-on:input="updateTitleValue($event.target.value)"
+      v-model="titleProp"
+      id="title"
+      name="title"
+      placeholder="Title"
+    />
 
     <form @submit.prevent="addTodo">
       <input v-model="text" name="text" placeholder="Add Todo" />
@@ -13,7 +20,7 @@
 import { v4 as uuidv4 } from "uuid";
 export default {
   name: "AddTodo",
-
+  props: ["titleProp"],
   data() {
     return {
       title: "",
@@ -31,12 +38,10 @@ export default {
       //send up to parent
       this.$emit("add-todo", newTodo);
       this.text = "";
-    }
-  },
-  //watch changes in input and pass to parent
-  watch: {
-    title: function() {
-      this.$emit("card-title", this.title);
+    },
+
+    updateTitleValue(value) {
+      this.$emit("card-title", value);
     }
   }
 };
