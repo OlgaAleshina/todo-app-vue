@@ -45,7 +45,7 @@ yarn serve
 
 ## Deployment
 
-
+Deployed with [Github pages](https://olgaaleshina.github.io/todo-app-vue/)
 
 ## Built With
 
