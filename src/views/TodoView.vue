@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       id: "",
-      title: "vv",
+      title: "",
       todos: [],
       showClearModal: false,
       showCancelModal: false,
